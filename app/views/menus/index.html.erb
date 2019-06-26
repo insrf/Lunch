@@ -1,0 +1,9 @@
+<!-- = month_calendar events: @menus do |date, menus|
+  = date
+  - menus.each do |menu|
+    %div
+      = menu.name -->
+
+<div id="events_calendar">
+  <%= render partial: "calendar", locals: {events: @menus} %>
+</div>

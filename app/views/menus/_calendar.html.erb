@@ -1,0 +1,10 @@
+<%= month_calendar events: @menus, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, menus| %>
+
+  <%= date %>
+  <% menus.each do |menu| %>
+    <div>
+      <%= menu.name %>
+      <%= link_to 'Go order', admin_menu_path(menu), :class => 'btn btn-default' %> 
+    </div>
+  <% end %>
+<% end %>
