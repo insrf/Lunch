@@ -1,4 +1,7 @@
 class Menu < ApplicationRecord
+  has_many :orders
+  has_many :users, :through => :orders
+
   self.inheritance_column = :foo
   validates :name, :type, :price, presence: true
 

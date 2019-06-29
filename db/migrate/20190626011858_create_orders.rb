@@ -1,0 +1,12 @@
+class CreateOrders < ActiveRecord::Migration[5.2]
+  def change
+    create_table :orders do |t|
+      t.references :menu
+      t.references :user
+      t.decimal :fix_price, precision: 5, scale: 2
+      t.time :date
+
+      t.timestamps
+    end
+  end
+end

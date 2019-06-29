@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe 'associations' do
+    it { should have_many(:menus).through(:orders)  }
+  end
+
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
@@ -12,7 +16,6 @@ RSpec.describe User, type: :model do
 
   describe 'admin creating' do
     it 'first user should be change type to admin' do
-
 
       expect(users.first.admin?).to   be_truthy
       expect(users.second.admin?).to  be_falsey
