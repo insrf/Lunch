@@ -3,6 +3,10 @@ FactoryBot.define do
     "test#{n}@test.com"
   end
 
+  sequence :name do |n|
+    "test#{n}@test.com"
+  end
+
   factory :user do
     email { "test@test.com" }
     name { "MyString" }
