@@ -17,7 +17,7 @@
 %p
   %strong= model_class.human_attribute_name(:photo) + ':'
   %br
-  = @menu.photo
+  = image_tag(@menu.photo.thumb.url, alt: 'Photo') if @menu.photo?
 
 
 = link_to t('.back', :default => t("helpers.links.back")), admin_menus_path, :class => 'btn btn-default'

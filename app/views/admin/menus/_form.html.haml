@@ -17,7 +17,7 @@
   .form-group
     = f.label :photo, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.text_field :photo, class: 'form-control', required: true
+      = f.file_field :photo, class: 'form-control', required: true
     = f.error_span(:photo)
   .form-group
     .col-lg-offset-2.col-lg-10

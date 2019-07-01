@@ -9,7 +9,6 @@
       %th= model_class.human_attribute_name(:type)
       %th= model_class.human_attribute_name(:price)
       %th= model_class.human_attribute_name(:photo)
-      %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @menus.each do |menu|
@@ -18,8 +17,8 @@
         %td= menu.name
         %td= menu.type
         %td= menu.price
-        %td= menu.photo
-        %td=l menu.created_at
+        %td= image_tag(menu.photo.small_thumb.url, alt: 'Photo') if menu.photo?
+
         %td
           = link_to t('.show', :default => t("helpers.links.show")), admin_menu_path(menu), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_menu_path(menu), :class => 'btn btn-default btn-xs'
