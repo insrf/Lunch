@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
-    @order.date = Time.now
     @order.fix_price = Menu.find(order_params[:menu_id]).price
     if @order.save
       redirect_to @order, notice: 'Your order successfully created.'

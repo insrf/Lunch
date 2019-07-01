@@ -6,7 +6,7 @@ feature 'List redirect to list menu', %q{
 } do
 
   let!(:user) { create(:user) }
-  let!(:menu) { create(:menu) }
+  let!(:item) { create(:item) }
 
   scenario 'User try add order menu' do
     sign_in(user)

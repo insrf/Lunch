@@ -1,4 +1,4 @@
-module MenusHelper
+module ItemsHelper
   def events_ajax_previous_link
     ->(param, date_range) { link_to raw("&laquo;"), {param => date_range.first - 1.day}, remote: :true}
   end

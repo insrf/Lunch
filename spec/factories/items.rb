@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :menu do
+  factory :item do
     name { "MyString" }
-    type { 1 }
+    course_type { 1 }
     price { "9.99" }
     photo { "MyString" }
   end
