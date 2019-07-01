@@ -23,7 +23,7 @@ feature 'Admin can see users list', %q{
     sign_in(user)
 
     visit admin_users_path
-  
+
     expect(page).to have_content 'You are not authorized to view this page.'
 
     users.each do |user|

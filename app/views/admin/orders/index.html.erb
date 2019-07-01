@@ -1,0 +1,10 @@
+<%= month_calendar events: @orders do |date, orders| %>
+  <%= date %>
+
+  <% orders.each do |order| %>
+    <div>
+      <%= order.menu.name %>
+      <%= order.user.name %>
+    </div>
+  <% end %>
+<% end %>
