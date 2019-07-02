@@ -1,8 +1,6 @@
 class Item < ApplicationRecord
-  has_many :orders
-  has_many :users, :through => :orders
+  has_and_belongs_to_many :menus
 
-  # self.inheritance_column = :foo
   validates :name, :course_type, :price, presence: true
 
   mount_uploader :photo, ImageUploader

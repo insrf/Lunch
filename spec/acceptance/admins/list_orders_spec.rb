@@ -7,7 +7,8 @@ feature 'List orders and weekdays', %q{
   let!(:admin) { create(:admin) }
   let(:user) { create(:user) }
   let(:item) {create(:item) }
-  let!(:order) { create(:order, item_id: item.id, user_id: user.id)}
+  let(:menu) {create(:menu) }
+  let!(:order) { create(:order, menu_id: menu.id, user_id: user.id)}
 
   scenario 'Admin try view orders item' do
     sign_in(admin)

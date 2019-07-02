@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'associations' do
-    it { should have_many(:items).through(:orders)  }
+    it { should have_many(:menus).through(:orders)  }
   end
 
   describe 'validations' do

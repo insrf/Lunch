@@ -1,0 +1,14 @@
+= form_for [:admin, @menu], html: { class: "form form-horizontal menu" } do |f|
+  .dropdown.form-group
+    %button#dropdownMenuButton.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+      Select items
+      %b.caret
+      .dropdown-menu
+      = f.collection_check_boxes :item_ids, Item.all, :id, :name do |b|
+        .dropdown-item{"aria-labelledby" => "dropdownMenuButton"}
+          = b.check_box id: b.object.id
+          = b.label
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil,class: 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_menus_path, :class => 'btn btn-default'

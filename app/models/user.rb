@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
-  has_many :items, :through => :orders
+  has_many :menus, :through => :orders
 
   after_initialize :set_admin_role, :if => :new_record?
 
