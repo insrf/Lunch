@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_and_belongs_to_many :menus
-  has_many :orders
-  has_many :users, :through => :orders
+  has_many :item_orders
+  has_many :orders, :through => :item_orders
 
   validates :name, :course_type, :price, presence: true
 

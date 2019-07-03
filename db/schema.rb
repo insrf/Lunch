@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_050728) do
+ActiveRecord::Schema.define(version: 2019_07_03_152909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "item_orders", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "order_id"
+    t.decimal "fix_price", precision: 5, scale: 2
+    t.index ["item_id"], name: "index_item_orders_on_item_id"
+    t.index ["order_id"], name: "index_item_orders_on_order_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
@@ -37,12 +45,9 @@ ActiveRecord::Schema.define(version: 2019_07_03_050728) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "item_id"
     t.bigint "user_id"
-    t.decimal "fix_price", precision: 5, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

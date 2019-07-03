@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :item
+  has_many :item_orders
+  has_many :items, :through => :item_orders
   belongs_to :user
 
   def start_time

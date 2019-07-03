@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
-    @order.fix_price = Item.find(order_params[:item_id]).price
+    # @order.item_orders.fix_price.push(Item.orders)
     if @order.save
       redirect_to @order, notice: 'Your order successfully created.'
     else
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:item_id)
+    params.require(:order).permit(item_ids: [])
   end
 
   def find_order
