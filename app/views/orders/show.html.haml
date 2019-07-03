@@ -3,21 +3,21 @@
   %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
-  %strong= model_class.human_attribute_name(:menu_id) + ':'
+  %strong= model_class.human_attribute_name(:item_id) + ':'
   %br
-  = @order.menu_id
+  = @order.item.name
 %p
   %strong= model_class.human_attribute_name(:user_id) + ':'
   %br
-  = @order.user_id
+  = @order.user.name
 %p
   %strong= model_class.human_attribute_name(:fix_price) + ':'
   %br
   = @order.fix_price
 %p
-  %strong= model_class.human_attribute_name(:date) + ':'
+  %strong= model_class.human_attribute_name(:created_at) + ':'
   %br
-  = @order.date
+  = @order.created_at.to_date
 
 
 = link_to t('.back', :default => t("helpers.links.back")), orders_path, :class => 'btn btn-default'

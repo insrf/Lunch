@@ -1,7 +1,7 @@
 = month_calendar events: @menus, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, menus|
   = date
-  = link_to 'Go order', new_order_path, :class => 'btn btn-default' if Time.now.to_date == date
-  - menus.each do |menu|
-    = link_to 'See menu', menu_path(menu), :class => 'btn btn-default' 
+    - menus.each do |menu|
+    = link_to 'Go order', new_order_path(menu_id: menu.id), :class => 'btn btn-default' if Time.now.to_date == date
+    = link_to 'See menu', menu_path(menu), :class => 'btn btn-default'
     %div
       = menu.id

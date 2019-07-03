@@ -2,7 +2,7 @@
   .form-group
     = f.label :menu_id, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :menu_id, Menu.all, :id, :name, prompt: true, class: 'form-control', required: true
+      = f.collection_select :item_id, @menu.items, :id, :name, prompt: true, class: 'form-control', required: true
     = f.error_span(:menu_id)
   .form-group
     .col-lg-offset-2.col-lg-10

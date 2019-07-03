@@ -7,8 +7,7 @@ feature 'List orders and weekdays', %q{
   let!(:admin) { create(:admin) }
   let(:user) { create(:user) }
   let(:item) {create(:item) }
-  let(:menu) {create(:menu) }
-  let!(:order) { create(:order, menu_id: menu.id, user_id: user.id)}
+  let!(:order) { create(:order, item_id: item.id, user_id: user.id)}
 
   scenario 'Admin try view orders item' do
     sign_in(admin)
@@ -17,7 +16,6 @@ feature 'List orders and weekdays', %q{
     (Time.now.beginning_of_month.to_i..Time.now.end_of_month.to_i).step(1.day) do |date|
       expect(page).to have_content Time.at(date).to_date
       expect(page).to have_content user.name
-      expect(page).to have_content item.name
     end
   end
 
