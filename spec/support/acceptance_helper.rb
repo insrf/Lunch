@@ -10,4 +10,14 @@ module AcceptanceHelper
     visit '/'
     click_on 'log_out'
   end
+
+  def create_menu(admin, item)
+    sign_in(admin)
+    visit admin_menus_path
+
+    click_on 'New'
+
+    check item.id
+    click_on 'Create Menu'
+  end  
 end
