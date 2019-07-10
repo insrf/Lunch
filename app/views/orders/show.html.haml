@@ -5,7 +5,9 @@
 %p
   %strong= model_class.human_attribute_name(:item_id) + ':'
   %br
-  = @order.id
+  - @order.items.each do |item|
+    %p= item.name
+    %p= item.price
 %p
   %strong= model_class.human_attribute_name(:user_id) + ':'
   %br

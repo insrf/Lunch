@@ -1,4 +1,5 @@
 = form_for [:admin, @item], html: { class: "form form-horizontal item" } do |f|
+  = render 'shared/errors', resource: @item
   .form-group
     = f.label :name, class: 'control-label col-lg-2'
     .col-lg-10
@@ -7,7 +8,7 @@
   .form-group
     = f.label :course_type, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.text_field :course_type, class: 'form-control', required: true
+      = f.select :course_type, Item.course_types.keys, class: 'form-control', required: true
     = f.error_span(:course_type)
   .form-group
     = f.label :price, class: 'control-label col-lg-2'
@@ -17,7 +18,7 @@
   .form-group
     = f.label :photo, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.file_field :photo, class: 'form-control', required: true
+      = f.file_field :photo
     = f.error_span(:photo)
   .form-group
     .col-lg-offset-2.col-lg-10

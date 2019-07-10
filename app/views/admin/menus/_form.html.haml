@@ -1,13 +1,11 @@
 = form_for [:admin, @menu], html: { class: "form form-horizontal menu" } do |f|
-  .dropdown.form-group
-    %button#dropdownMenuButton.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-      Select items
-      %b.caret
-      .dropdown-menu
-      = f.collection_check_boxes :item_ids, Item.all, :id, :name do |b|
-        .dropdown-item{"aria-labelledby" => "dropdownMenuButton"}
-          = b.check_box id: b.object.id
-          = b.label
+  = render 'shared/errors', resource: @menu
+  .form-group
+    = f.label 'Select items', class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_check_boxes :item_ids, Item.all, :id, :name, class: 'form-control' do |b|
+        .form-check
+          = b.label { b.check_box + b.object.name + " |||  price :   #{b.object.price}" }
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil,class: 'btn btn-primary'

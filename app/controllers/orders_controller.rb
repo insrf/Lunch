@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :find_order , only: %i[show edit update destroy]
-  before_action :find_menu, only: %i[new]
+  before_action :find_order, only: %i[show edit update destroy]
+  before_action :find_menu, only: %i[new create edit update]
 
   def index
     @orders = Order.all
@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.new(order_params)
-    # @order.item_orders.fix_price.push(Item.orders)
+    @order = current_user.orders.build(order_params)
+
     if @order.save
       redirect_to @order, notice: 'Your order successfully created.'
     else
@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
+    params[:order][:item_ids] = params[:order][:item_ids].reject { |c| c.empty? }
     params.require(:order).permit(item_ids: [])
   end
 
@@ -50,6 +51,6 @@ class OrdersController < ApplicationController
   end
 
   def find_menu
-    @menu = Menu.find(params[:menu_id])
+    @menu = Menu.today.take!
   end
 end

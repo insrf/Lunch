@@ -5,20 +5,14 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:menu_id)
       %th= model_class.human_attribute_name(:user_id)
-      %th= model_class.human_attribute_name(:fix_price)
-      %th= model_class.human_attribute_name(:date)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @orders.each do |order|
       %tr
         %td= link_to order.id, order_path(order)
-        %td= order.menu_id
         %td= order.user_id
-        %td= order.fix_price
-        %td= order.date
         %td=l order.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), order_path(order), :class => 'btn btn-default btn-xs'

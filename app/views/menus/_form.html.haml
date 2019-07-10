@@ -1,4 +1,5 @@
 = form_for @menu, html: { class: "form form-horizontal menu" } do |f|
+  = render 'shared/errors', resource: @menu
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil,class: 'btn btn-primary'

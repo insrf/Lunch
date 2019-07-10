@@ -1,13 +1,20 @@
 = form_for @order, html: { class: "form form-horizontal order" } do |f|
-  .dropdown.form-group
-    %button#dropdownMenuButton.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-      Select items
-      %b.caret
-      .dropdown-menu
-      = f.collection_check_boxes :item_ids, @menu.items, :id, :name do |b|
-        .dropdown-item{"aria-labelledby" => "dropdownMenuButton"}
-          = b.check_box id: b.object.id
-          = b.label
+  = render 'shared/errors', resource: @order
+  .form-group
+    = f.label :first_course, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_check_boxes :item_ids, @menu.items.first_course, :id, :name, {multiple: false}
+    = f.error_span(:first_course)
+  .form-group
+    = f.label :second_course, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_check_boxes :item_ids, @menu.items.second_course, :id, :name, {multiple: false}
+    = f.error_span(:second_course)
+  .form-group
+    = f.label :drink, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_check_boxes :item_ids, @menu.items.drink, :id, :name, {multiple: false}
+    = f.error_span(:drink)
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil,class: 'btn btn-primary'

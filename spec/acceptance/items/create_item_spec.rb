@@ -14,7 +14,7 @@ feature 'Create item menu', %q{
 
     click_on 'New'
     fill_in 'Name', with: 'Name item'
-    fill_in 'Course type', with: '0'
+    page.select 'first_course', from: 'Course type'
     fill_in 'Price', with: '9.99'
     click_on 'Create'
 
@@ -37,7 +37,6 @@ feature 'Create item menu', %q{
 
     click_on 'New'
     fill_in 'Name', with: ''
-    fill_in 'Course type', with: ''
     fill_in 'Price', with: ''
     click_on 'Create'
 

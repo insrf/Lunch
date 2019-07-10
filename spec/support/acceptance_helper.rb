@@ -17,7 +17,14 @@ module AcceptanceHelper
 
     click_on 'New'
 
-    check item.id
+    check item.name
     click_on 'Create Menu'
-  end  
+  end
+
+  def go_order(user)
+    sign_in(user)
+    visit root_path
+
+    click_on 'Go order'
+  end
 end
