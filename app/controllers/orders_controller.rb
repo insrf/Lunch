@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @order.save_price
 
     if @order.save
       redirect_to @order, notice: 'Your order successfully created.'

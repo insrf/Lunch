@@ -1,0 +1,17 @@
+- model_class = Order
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+  %p
+    %strong= model_class.human_attribute_name(:order) + ':'
+    %br
+    %h2= total_order_price(@orders)
+    - @orders.each do |order|
+      %h3= order.user.name
+      - order.items.each do |item|
+        = item.name
+        %p= item.price
+
+
+
+= link_to t('.back', :default => t("helpers.links.back")), admin_orders_path, :class => 'btn btn-default'

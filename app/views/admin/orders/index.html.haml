@@ -1,5 +1,6 @@
 = month_calendar events: @orders do |date, orders|
   = date
-  - orders.each do |order|
+  = link_to 'See orders', showdate_admin_orders_path(date: date), :class => 'btn btn-default'
+    - orders.each do |order|
     %div
       = order.user.name

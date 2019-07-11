@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   include ActiveModel::Validations
+  include WorkWithDate
 
   has_many :item_orders
   has_many :items, :through => :item_orders
@@ -11,6 +12,14 @@ class Order < ApplicationRecord
   def start_time
     self.created_at
   end
+
+  def save_price
+    self.item_orders.each do |item_order|
+      item_order.fix_price = item_order.item.price
+    end
+  end
+
+  private
 
   def validate_uniqueness_of_course_type
     items_count = Item.where(id: item_ids).pluck(:course_type)

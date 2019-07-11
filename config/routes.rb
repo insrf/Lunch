@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :menus
-    resources :users, only: [:index]
-    resources :orders, only: [:index]
+    resources :users, only: :index
+    resources :orders, only: :index do
+      get 'showdate', :on => :collection
+    end
   end
 end
