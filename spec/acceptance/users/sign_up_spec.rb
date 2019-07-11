@@ -12,7 +12,7 @@ feature 'Sign up', %q{
     fill_in 'Email', with: 'email@email.ru'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
-    click_on 'Sign up'
+    click_button 'Sign up'
 
     expect(page.current_path).to eq root_path
   end
@@ -25,7 +25,7 @@ feature 'Sign up', %q{
     fill_in 'Email', with: ''
     fill_in 'Password', with: ''
     fill_in 'Password confirmation', with: ''
-    click_on 'Sign up'
+    click_button 'Sign up'
 
     expect(page).to have_content "Email can't be blank"
     expect(page).to have_content "Email is invalid"
